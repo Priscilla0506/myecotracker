@@ -4,13 +4,13 @@ EcoTrack is a modern, responsive web application designed to help individuals ca
 
 ---
 
-## 🌎 Problem Statement
+##  Problem Statement
 
 Human-induced greenhouse gas emissions are driving climate change, raising global temperatures, and threatening ecosystems. While many individuals want to help, carbon footprints often feel abstract, complex, and difficult to conceptualize. There is a critical need for an accessible, daily-use tool that translates high-level emission numbers into small, concrete, and actionable lifestyle changes.
 
 ---
 
-## 🌱 Solution Description
+##  Solution Description
 
 EcoTrack offers a clean, client-side solution that transforms carbon statistics into personal action items. Users can input their transport modes, energy utilities, diet profiles, and shopping habits to view an instant carbon footprint estimation. 
 
@@ -18,7 +18,7 @@ Once calculated, the app offers custom recommendations, tracks daily carbon-redu
 
 ---
 
-## ✨ Features
+##  Features
 
 1. **Carbon Footprint Calculator**: Enter daily travel distance, primary transport method, monthly electricity use, dietary preferences, plastic waste, and retail consumption to get an instant calculation of your monthly CO2 output.
 2. **Dynamic Dashboard Metrics**: View your footprint category (Low, Moderate, or High), total carbon saved over time, total actions completed, best eco habits, and target goal progress.
@@ -31,7 +31,7 @@ Once calculated, the app offers custom recommendations, tracks daily carbon-redu
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Frontend Structure**: HTML5 (Semantic Structure)
 - **Styling**: Vanilla CSS3 (Custom Glassmorphism, CSS Variables, Responsive Grids, Keyframe Animations)
@@ -40,7 +40,7 @@ Once calculated, the app offers custom recommendations, tracks daily carbon-redu
 
 ---
 
-## 🚀 How to Run the Project
+##  How to Run the Project
 
 Since this is a client-side application with no backend dependencies, it can be run directly inside any modern web browser.
 
@@ -51,7 +51,7 @@ Since this is a client-side application with no backend dependencies, it can be 
 
 ---
 
-## 📊 Carbon Calculation Formulas
+##  Carbon Calculation Formulas
 
 ### 1. Transportation
 $$\text{Transport Emissions (Monthly)} = \text{Daily Distance (km)} \times 30 \times \text{Factor}$$
@@ -85,7 +85,7 @@ $$\text{Electricity Emissions} = \text{kWh} \times 0.82 \text{ kg CO2}$$
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 - **Interactive Charts**: Integrate chart libraries (like Chart.js) to display a pie-chart breakdown of carbon footprints and bar charts showing historical daily savings.
 - **Custom Challenges**: Allow users to define their own custom green targets and input personalized carbon saving parameters.
