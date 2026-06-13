@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTrack – Personal Carbon Footprint Tracker</title>
+  <meta name="description" content="Calculate your daily carbon impact, track eco-friendly daily actions, and reduce your footprint through personalized insights and challenges.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+</head>
+<body>
+
+  <!-- Sticky Header & Navigation -->
+  <header id="header">
+    <!-- Scrolling Marquee Banner -->
+    <div class="marquee-container" aria-hidden="true">
+      <div class="marquee-content">
+        ✦ Lowkey offsetting carbon emissions ✦ Slaying the sustainability game ✦ Emissions are NOT it, period ✦ Zero-waste is a whole vibe ✦ No cap, every gram counts ✦ Lowkey offsetting carbon emissions ✦ Slaying the sustainability game ✦ Emissions are NOT it, period ✦ Zero-waste is a whole vibe ✦ No cap, every gram counts ✦
+      </div>
+    </div>
+    <div class="container nav-container">
+      <a href="#home" class="logo" id="nav-logo">
+        <span class="logo-icon">🌱</span>
+        <div class="logo-text">Eco<span>Track</span></div>
+      </a>
+      
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+        <li><a href="#calculator" class="nav-link">Calculator</a></li>
+        <li><a href="#tracker" class="nav-link">Action Tracker</a></li>
+        <li><a href="#challenges" class="nav-link">Challenges</a></li>
+        <li><a href="#badges" class="nav-link">Badges</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li>
+          <div class="nav-stats-pill">
+            <span id="nav-saved-val">0</span> kg saved
+          </div>
+        </li>
+        <li id="nav-user-item" style="display: none;">
+          <div class="user-welcome">
+            Account: <span id="nav-username">Guest</span>
+          </div>
+        </li>
+        <li id="nav-logout-item" style="display: none;">
+          <button class="btn-logout" id="btn-logout">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Landing Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge-pill">
+          Every Action Counts
+        </div>
+        <h1 class="hero-title">EcoTrack – Track Your Carbon Footprint</h1>
+        <p class="hero-desc">
+          Understand your daily carbon impact, track eco-friendly actions, and reduce your footprint through personalized insights and interactive community challenges.
+        </p>
+        <div class="hero-ctas">
+          <a href="#calculator" class="btn btn-primary">Calculate Footprint</a>
+          <a href="#tracker" class="btn btn-secondary">Start Tracking Actions</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- Modern Premium Eco Illustration using Inline SVG -->
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background glow -->
+          <circle cx="250" cy="250" r="180" fill="rgba(16, 185, 129, 0.06)" />
+          <circle cx="250" cy="250" r="130" fill="rgba(6, 182, 212, 0.08)" />
+          
+          <!-- Earth Outline -->
+          <circle cx="250" cy="250" r="100" fill="#e0f2fe" stroke="#38bdf8" stroke-width="3" />
+          
+          <!-- Abstract Earth land masses -->
+          <path d="M190,200 C210,180 230,190 240,210 C250,230 230,260 210,270 C190,280 180,260 170,240 C160,220 170,220 190,200 Z" fill="#bbf7d0" />
+          <path d="M270,250 C290,230 310,240 330,220 C350,200 340,260 320,280 C300,300 280,290 270,270 Z" fill="#bbf7d0" />
+          <path d="M220,310 C240,320 260,330 250,345 C240,360 210,350 200,330 Z" fill="#bbf7d0" />
+          
+          <!-- Leaf Wrapping around Earth -->
+          <path d="M150,330 C120,290 120,220 160,170 C200,120 280,110 330,130 C270,160 220,180 180,230 C150,270 150,310 150,330 Z" fill="#10b981" opacity="0.85" />
+          <path d="M180,230 Q250,190 320,170" stroke="#047857" stroke-width="2" fill="none" stroke-linecap="round" />
+          
+          <!-- Sprouting plant at the top -->
+          <g transform="translate(250, 120)">
+            <path d="M0,0 Q-15,-20 -30,-15 Q-15,5 0,0" fill="#34d399" />
+            <path d="M0,0 Q15,-25 35,-25 Q25,-2 0,0" fill="#059669" />
+            <path d="M0,25 L0,0" stroke="#059669" stroke-width="3" fill="none" />
+          </g>
+          
+          <!-- Decorative Stars / Sparkles -->
+          <g transform="translate(120, 120)" opacity="0.8">
+            <path d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z" fill="#f59e0b" />
+          </g>
+          <g transform="translate(370, 300)" opacity="0.8">
+            <path d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5 Z" fill="#38bdf8" />
+          </g>
+          <g transform="translate(350, 170)" opacity="0.6">
+            <circle cx="0" cy="0" r="4" fill="#10b981" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Progress Dashboard Section -->
+  <section id="dashboard" class="light-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Your Progress Dashboard</h2>
+        <p class="section-desc">Keep track of your carbon metrics, daily impact reductions, and overall milestones in real-time.</p>
+      </div>
+      
+      <!-- Metrics Grid -->
+      <div class="dashboard-grid">
+        <!-- Latest Footprint -->
+        <div class="glass-card metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Monthly Footprint</span>
+            <div class="metric-icon">📊</div>
+          </div>
+          <div class="metric-value" id="dashboard-footprint">--</div>
+          <div class="metric-footer" id="dashboard-footprint-cat">Not calculated yet</div>
+        </div>
+
+        <!-- Total Saved -->
+        <div class="glass-card metric-card saved-card">
+          <div class="metric-header">
+            <span class="metric-title">Total CO2 Saved</span>
+            <div class="metric-icon">🍃</div>
+          </div>
+          <div class="metric-value"><span id="dashboard-saved">0.0</span> <span style="font-size: 1rem; font-weight: 500;">kg</span></div>
+          <div class="metric-footer">Lifetime impact offset</div>
+        </div>
+
+        <!-- Actions Completed -->
+        <div class="glass-card metric-card actions-card">
+          <div class="metric-header">
+            <span class="metric-title">Actions Logged</span>
+            <div class="metric-icon">✓</div>
+          </div>
+          <div class="metric-value" id="dashboard-actions-count">0</div>
+          <div class="metric-footer">Total checked habits</div>
+        </div>
+
+        <!-- Best Habit -->
+        <div class="glass-card metric-card habit-card">
+          <div class="metric-header">
+            <span class="metric-title">Best Eco Habit</span>
+            <div class="metric-icon">⭐</div>
+          </div>
+          <div class="metric-value" style="font-size: 1.35rem;" id="dashboard-best-habit">None Yet</div>
+          <div class="metric-footer" id="dashboard-best-habit-desc">Log actions to reveal</div>
+        </div>
+      </div>
+
+      <!-- Offset Goal Progress -->
+      <div class="glass-card progress-goal-card">
+        <div class="progress-header">
+          <h3 style="font-size: 1.2rem; color: #064e3b;">Monthly Savings Target Goal</h3>
+          <span style="font-weight: 600;" id="goal-percentage">0%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="goal-progress-bar"></div>
+        </div>
+        <div class="progress-header" style="margin-top: 8px; font-size: 0.85rem; color: var(--muted-text);">
+          <span>0 kg Saved</span>
+          <span id="goal-target-label">Target: 50 kg CO2 / Month</span>
+        </div>
+        
+        <div class="dashboard-message" id="dashboard-encouragement">
+          <span id="encouragement-text">Great start! Calculate your carbon footprint and complete daily actions to reduce your impact.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footprint Calculator Section -->
+  <section id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Carbon Footprint Calculator</h2>
+        <p class="section-desc">Estimate your monthly greenhouse gas emissions based on transportation, housing utilities, dietary habits, and shopping choices.</p>
+      </div>
+
+      <!-- Calculator Form Card -->
+      <div class="glass-card" style="margin-bottom: 32px;">
+        <form id="calculator-form">
+          
+          <!-- Travel Configuration -->
+          <h3 style="margin-bottom: 16px; font-size: 1.2rem; color: #064e3b; display: flex; align-items: center; gap: 8px;">
+            Travel & Transport
+          </h3>
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="travel-distance" class="form-label">Daily Travel Distance (km)</label>
+              <input type="number" id="travel-distance" class="form-input" min="0" placeholder="e.g. 15" required>
+            </div>
+            <div class="form-group">
+              <label for="travel-mode" class="form-label">Primary Travel Mode</label>
+              <select id="travel-mode" class="form-select" required>
+                <option value="" disabled selected>Select Travel Mode</option>
+                <option value="Walking">Walking / Bicycle</option>
+                <option value="Bicycle">Bicycle</option>
+                <option value="Bus">Bus</option>
+                <option value="Bike">Motorcycle / Bike</option>
+                <option value="Car">Car</option>
+                <option value="Train">Train</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Home Utilities & Diet -->
+          <h3 style="margin: 24px 0 16px 0; font-size: 1.2rem; color: #064e3b; display: flex; align-items: center; gap: 8px;">
+            Home Utilities & Diet
+          </h3>
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="electricity" class="form-label">Electricity Usage (units / kWh per month)</label>
+              <input type="number" id="electricity" class="form-input" min="0" placeholder="e.g. 150" required>
+            </div>
+            <div class="form-group">
+              <label for="food-habit" class="form-label">Dietary Habit</label>
+              <select id="food-habit" class="form-select" required>
+                <option value="" disabled selected>Select Dietary Habit</option>
+                <option value="Vegetarian">Vegetarian (No meat)</option>
+                <option value="Mixed">Mixed (Moderate poultry/meat)</option>
+                <option value="Non-Vegetarian">Non-Vegetarian (Heavy meat consumer)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Waste & Consumerism -->
+          <h3 style="margin: 24px 0 16px 0; font-size: 1.2rem; color: #064e3b; display: flex; align-items: center; gap: 8px;">
+            Waste & Consumption
+          </h3>
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="plastic-usage" class="form-label">Plastic Usage per Week</label>
+              <select id="plastic-usage" class="form-select" required>
+                <option value="" disabled selected>Select Plastic Level</option>
+                <option value="Low">Low (Reusable bags, low packaging)</option>
+                <option value="Medium">Medium (Moderate usage)</option>
+                <option value="High">High (Single-use plastics frequently)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="shopping-habit" class="form-label">Shopping Habit (Clothing, Tech, etc.)</label>
+              <select id="shopping-habit" class="form-select" required>
+                <option value="" disabled selected>Select Shopping Level</option>
+                <option value="Low">Low (Minimalist, essential items only)</option>
+                <option value="Medium">Medium (Average consumer)</option>
+                <option value="High">High (Frequent purchases, fast fashion)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-btn-container">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Calculate Footprint</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Calculator Results Box -->
+      <div class="glass-card" id="calculator-results-panel" style="display: none; flex-direction: column;">
+        <div class="result-box" id="calculator-result">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Dynamic Personalized Insights Card container -->
+        <div class="insights-container" id="insights-container" style="display: none;">
+          <h3 class="insights-header">Personalized Insights</h3>
+          <div class="insights-grid" id="insights-grid">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Eco Action Tracker Section -->
+  <section id="tracker" class="light-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Daily Eco Action Tracker</h2>
+        <p class="section-desc">Form eco-friendly habits by checking off daily practices. Save your selections to subtract CO2 directly from your footprint.</p>
+      </div>
+
+      <div class="tracker-layout">
+        <!-- Tracker Checkbox Selection -->
+        <div class="glass-card">
+          <h3 style="margin-bottom: 20px; color: #064e3b; display: flex; align-items: center; gap: 8px;">
+            Which green habits did you perform today?
+          </h3>
+          <form id="tracker-form">
+            <div class="actions-list">
+              
+              <!-- Action 1: Public Transport -->
+              <label class="action-checkbox-card" for="act-transport">
+                <input type="checkbox" id="act-transport" value="transport">
+                <span class="custom-checkbox"></span>
+                <span class="action-emoji">🚌</span>
+                <div class="action-details">
+                  <span class="action-title">Used public transport</span>
+                  <span class="action-reduction">Reduces 2.0 kg CO2</span>
+                </div>
+              </label>
+
+              <!-- Action 2: Walk or cycle -->
+              <label class="action-checkbox-card" for="act-walk-cycle">
+                <input type="checkbox" id="act-walk-cycle" value="walk-cycle">
+                <span class="custom-checkbox"></span>
+                <span class="action-emoji">🚲</span>
+                <div class="action-details">
+                  <span class="action-title">Walked or cycled</span>
+                  <span class="action-reduction">Reduces 3.0 kg CO2</span>
+                </div>
+              </label>
+
+              <!-- Action 3: Save electricity -->
+              <label class="action-checkbox-card" for="act-electricity">
+                <input type="checkbox" id="act-electricity" value="electricity">
+                <span class="custom-checkbox"></span>
+                <span class="action-emoji">💡</span>
+                <div class="action-details">
+                  <span class="action-title">Saved electricity</span>
+                  <span class="action-reduction">Reduces 1.5 kg CO2</span>
+                </div>
+              </label>
+
+              <!-- Action 4: Avoided plastic -->
+              <label class="action-checkbox-card" for="act-plastic">
+                <input type="checkbox" id="act-plastic" value="plastic">
+                <span class="custom-checkbox"></span>
+                <span class="action-emoji">🛍️</span>
+                <div class="action-details">
+                  <span class="action-title">Avoided plastic</span>
+                  <span class="action-reduction">Reduces 1.0 kg CO2</span>
+                </div>
+              </label>
+
+              <!-- Action 5: Recycled waste -->
+              <label class="action-checkbox-card" for="act-recycle">
+                <input type="checkbox" id="act-recycle" value="recycle">
+                <span class="custom-checkbox"></span>
+                <span class="action-emoji">♻️</span>
+                <div class="action-details">
+                  <span class="action-title">Recycled waste</span>
+                  <span class="action-reduction">Reduces 1.2 kg CO2</span>
+                </div>
+              </label>
+
+              <!-- Action 6: Plant-based meal -->
+              <label class="action-checkbox-card" for="act-meal">
+                <input type="checkbox" id="act-meal" value="meal">
+                <span class="custom-checkbox"></span>
+                <span class="action-emoji">🥗</span>
+                <div class="action-details">
+                  <span class="action-title">Ate a plant-based meal</span>
+                  <span class="action-reduction">Reduces 2.5 kg CO2</span>
+                </div>
+              </label>
+
+              <!-- Action 7: Reusable bottle -->
+              <label class="action-checkbox-card" for="act-bottle">
+                <input type="checkbox" id="act-bottle" value="bottle">
+                <span class="custom-checkbox"></span>
+                <span class="action-emoji">🥤</span>
+                <div class="action-details">
+                  <span class="action-title">Carried reusable bottle</span>
+                  <span class="action-reduction">Reduces 0.5 kg CO2</span>
+                </div>
+              </label>
+
+            </div>
+            
+            <div class="tracker-cta">
+              <button type="submit" class="btn btn-primary" id="save-actions-btn">Save Today's Actions</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- History Log Box -->
+        <div class="history-box">
+          <h3 class="history-title">
+            <span>Action History Logs</span>
+          </h3>
+          <div class="history-list" id="history-list">
+            <!-- Rendered dynamically -->
+            <div class="no-history">No activity logged yet. Check actions above and save today's work!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eco Goals & Challenges Section -->
+  <section id="challenges">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Eco Goals & Challenges</h2>
+        <p class="section-desc">Join climate missions to speed up your environmental recovery. Challenge yourself to live green.</p>
+      </div>
+
+      <div class="challenges-grid">
+        
+        <!-- Challenge 1 -->
+        <div class="glass-card challenge-card" id="challenge-plastic">
+          <div class="challenge-header">
+            <span class="challenge-icon">🚫🛍️</span>
+            <span class="challenge-badge">7 Days</span>
+          </div>
+          <div>
+            <h3 class="challenge-title">7-Day Plastic Free Challenge</h3>
+            <p class="challenge-desc">Commit to zero single-use plastics, including straws, grocery carrier bags, and plastic bottles, for 7 consecutive days.</p>
+          </div>
+          <button class="btn btn-secondary btn-join-challenge" data-challenge-id="plastic">Join Challenge</button>
+        </div>
+
+        <!-- Challenge 2 -->
+        <div class="glass-card challenge-card" id="challenge-transport">
+          <div class="challenge-header">
+            <span class="challenge-icon">🚍🚂</span>
+            <span class="challenge-badge">1 Week</span>
+          </div>
+          <div>
+            <h3 class="challenge-title">Public Transport Week</h3>
+            <p class="challenge-desc">Swap out your private car for trains, buses, carpools, walking, or cycling for all commutes during the work week.</p>
+          </div>
+          <button class="btn btn-secondary btn-join-challenge" data-challenge-id="transport">Join Challenge</button>
+        </div>
+
+        <!-- Challenge 3 -->
+        <div class="glass-card challenge-card" id="challenge-electricity">
+          <div class="challenge-header">
+            <span class="challenge-icon">🔌💡</span>
+            <span class="challenge-badge">Flexible</span>
+          </div>
+          <div>
+            <h3 class="challenge-title">Save Electricity Challenge</h3>
+            <p class="challenge-desc">Unplug phantom electronics, use energy-saver appliances, wash clothes in cold water, and transition to daylight.</p>
+          </div>
+          <button class="btn btn-secondary btn-join-challenge" data-challenge-id="electricity">Join Challenge</button>
+        </div>
+
+        <!-- Challenge 4 -->
+        <div class="glass-card challenge-card" id="challenge-food">
+          <div class="challenge-header">
+            <span class="challenge-icon">🥦🍲</span>
+            <span class="challenge-badge">5 Days</span>
+          </div>
+          <div>
+            <h3 class="challenge-title">Plant-Based Meal Challenge</h3>
+            <p class="challenge-desc">Reduce agricultural greenhouse emissions by eating entirely plant-based recipes for breakfasts, lunches, and dinners.</p>
+          </div>
+          <button class="btn btn-secondary btn-join-challenge" data-challenge-id="food">Join Challenge</button>
+        </div>
+
+        <!-- Challenge 5 -->
+        <div class="glass-card challenge-card" id="challenge-recycle">
+          <div class="challenge-header">
+            <span class="challenge-icon">📦♻️</span>
+            <span class="challenge-badge">Ongoing</span>
+          </div>
+          <div>
+            <h3 class="challenge-title">Recycle More Challenge</h3>
+            <p class="challenge-desc">Separate paper, cardboard, metal tins, and glass. Upcycle packages and reduce household landfill waste by half.</p>
+          </div>
+          <button class="btn btn-secondary btn-join-challenge" data-challenge-id="recycle">Join Challenge</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Rewards & Badges Section -->
+  <section id="badges" class="light-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Rewards & Unlocked Badges</h2>
+        <p class="section-desc">Unlock digital achievement tags as you reduce carbon. Can you earn the ultimate Climate Champion badge?</p>
+      </div>
+
+      <div class="badges-grid">
+        
+        <!-- Badge 1 -->
+        <div class="badge-card" id="badge-starter">
+          <span class="badge-status">Locked</span>
+          <div class="badge-art">🌱</div>
+          <h3 class="badge-name">Green Starter</h3>
+          <p class="badge-criteria">Saved your first daily action log</p>
+        </div>
+
+        <!-- Badge 2 -->
+        <div class="badge-card" id="badge-energy">
+          <span class="badge-status">Locked</span>
+          <div class="badge-art">💡</div>
+          <h3 class="badge-name">Energy Saver</h3>
+          <p class="badge-criteria">Logged "Saved electricity" actions</p>
+        </div>
+
+        <!-- Badge 3 -->
+        <div class="badge-card" id="badge-plastic">
+          <span class="badge-status">Locked</span>
+          <div class="badge-art">🛡️</div>
+          <h3 class="badge-name">Plastic-Free Hero</h3>
+          <p class="badge-criteria">Logged plastic-free habits</p>
+        </div>
+
+        <!-- Badge 4 -->
+        <div class="badge-card" id="badge-travel">
+          <span class="badge-status">Locked</span>
+          <div class="badge-art">🚲</div>
+          <h3 class="badge-name">Green Traveler</h3>
+          <p class="badge-criteria">Logged public transport or cycle commutes</p>
+        </div>
+
+        <!-- Badge 5 -->
+        <div class="badge-card" id="badge-champion">
+          <span class="badge-status">Locked</span>
+          <div class="badge-art">🏆</div>
+          <h3 class="badge-name">Climate Champion</h3>
+          <p class="badge-criteria">Completed 10 total daily actions</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="glass-card about-box">
+        <h2 style="font-size: 2rem; margin-bottom: 16px; color: #064e3b;">About EcoTrack</h2>
+        <p>
+          EcoTrack makes climate awareness simple by turning carbon footprint numbers into daily practical actions. 
+          By understanding the weight of our transport, diets, utilities, and consumer waste, we can make informed incremental adjustments to preserve our global ecosystems.
+        </p>
+        
+        <div class="about-features">
+          <div class="about-feature-item">
+            <span class="about-feature-icon">⚡</span>
+            <div class="about-feature-text">
+              <h4>Accurate Estimation</h4>
+              <p>Uses standardized formulas to model carbon output quickly.</p>
+            </div>
+          </div>
+          <div class="about-feature-item">
+            <span class="about-feature-icon">📈</span>
+            <div class="about-feature-text">
+              <h4>Habit Building</h4>
+              <p>Fosters sustainable routines through daily check-in logs.</p>
+            </div>
+          </div>
+          <div class="about-feature-item">
+            <span class="about-feature-icon">🛡️</span>
+            <div class="about-feature-text">
+              <h4>Private & Secure</h4>
+              <p>All data stays on your local device—no cloud tracking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Reset Box -->
+      <div class="reset-btn-container">
+        <button class="btn btn-reset" id="reset-data-btn">Reset All Application Data</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2026 EcoTrack. Made with 🌱 for a greener planet.</p>
+      <p class="footer-quote">"The greatest threat to our planet is the belief that someone else will save it." – Robert Swan</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Center -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Authentication & Verification Modal Overlay -->
+  <div id="auth-section">
+    <!-- Sign In Card -->
+    <div class="glass-card auth-card active" id="signin-card">
+      <div class="auth-header">
+        <a href="#home" class="logo">
+          <span class="logo-icon">🌱</span>
+          <div class="logo-text">Eco<span>Track</span></div>
+        </a>
+        <h2>Welcome Back</h2>
+        <p>Sign in to track your personal carbon footprint</p>
+      </div>
+      
+      <form id="signin-form">
+        <div class="form-group">
+          <label for="signin-email" class="form-label">Email or Username</label>
+          <input type="text" id="signin-email" class="form-input" placeholder="e.g. eco_warrior" required>
+        </div>
+        <div class="form-group">
+          <label for="signin-password" class="form-label">Password</label>
+          <input type="password" id="signin-password" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Sign In</button>
+      </form>
+      
+      <div class="auth-footer">
+        Don't have an account? <a class="auth-link" id="link-to-signup">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- Sign Up Card -->
+    <div class="glass-card auth-card" id="signup-card">
+      <div class="auth-header">
+        <a href="#home" class="logo">
+          <span class="logo-icon">🌱</span>
+          <div class="logo-text">Eco<span>Track</span></div>
+        </a>
+        <h2>Create Account</h2>
+        <p>Start your ecological tracking journey today</p>
+      </div>
+      
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="signup-username" class="form-label">Username</label>
+          <input type="text" id="signup-username" class="form-input" placeholder="e.g. eco_warrior" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-email" class="form-label">Email Address</label>
+          <input type="email" id="signup-email" class="form-input" placeholder="e.g. user@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-password" class="form-label">Password</label>
+          <input type="password" id="signup-password" class="form-input" placeholder="At least 6 characters" minlength="6" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm" class="form-label">Confirm Password</label>
+          <input type="password" id="signup-confirm" class="form-input" placeholder="Re-enter password" minlength="6" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Sign Up & Verify</button>
+      </form>
+      
+      <div class="auth-footer">
+        Already have an account? <a class="auth-link" id="link-to-signin">Sign In</a>
+      </div>
+    </div>
+
+    <!-- OTP Verification Card -->
+    <div class="glass-card auth-card" id="otp-card">
+      <div class="auth-header">
+        <div class="logo">
+          <div class="logo-text">Verify<span>Email</span></div>
+        </div>
+        <h2>Verify Account</h2>
+        <p>A verification code has been generated for your account</p>
+      </div>
+      
+      <div class="otp-verify-desc">
+        For this prototype demonstration, we have simulated sending an OTP. Please check the credentials box below:
+      </div>
+      
+      <div class="otp-box">
+        Verification OTP Code:<br>
+        <strong id="otp-display-val">------</strong>
+      </div>
+      
+      <form id="otp-form">
+        <div class="form-group">
+          <label for="otp-code-input" class="form-label" style="justify-content: center;">Enter 6-Digit OTP</label>
+          <input type="text" id="otp-code-input" class="otp-input-field" maxlength="6" placeholder="000000" autocomplete="one-time-code" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Verify Code & Create Profile</button>
+      </form>
+      
+      <div class="auth-footer">
+        Back to <a class="auth-link" id="link-to-signin-from-otp">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Badge Share Modal -->
+  <div id="badge-modal" class="modal-overlay" style="display: none;">
+    <div class="glass-card modal-card">
+      <button class="modal-close-btn" id="badge-modal-close" aria-label="Close modal">&times;</button>
+      <h3 id="modal-badge-title" style="color: #064e3b; margin-bottom: 8px;">Badge Earned!</h3>
+      <p style="font-size: 0.85rem; color: var(--muted-text); margin-bottom: 20px;">Download your verified achievement card or share your impact on social media.</p>
+      
+      <!-- Visual Image Preview -->
+      <div class="modal-preview-box">
+        <img id="modal-badge-img" src="" alt="EcoTrack Badge Preview" style="width: 240px; height: 240px; border-radius: 50%; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);">
+      </div>
+
+      <div class="modal-actions">
+        <a id="btn-download-badge" class="btn btn-primary" style="width: 100%; margin-bottom: 20px; text-decoration: none;">Download Badge Image</a>
+        
+        <h4 style="font-size: 0.9rem; color: #064e3b; margin-bottom: 10px; text-align: left;">Share Achievement:</h4>
+        <div class="share-grid">
+          <a id="share-whatsapp" class="btn-share whatsapp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.453L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.59 1.98 14.122.955 11.5.955 6.062.955 1.638 5.326 1.634 10.756c-.001 1.674.452 3.3 1.311 4.757l-.955 3.486 3.585-.94c1.62.886 3.224 1.352 4.887 1.353z"/></svg>
+            WhatsApp
+          </a>
+          <a id="share-linkedin" class="btn-share linkedin" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+            LinkedIn
+          </a>
+          <button id="share-instagram" class="btn-share instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+          </button>
+        </div>
+
+        <!-- Instagram copy paste helper -->
+        <div id="instagram-helper" class="helper-box" style="display: none;">
+          <p>Download your badge card using the button above, then post it on Instagram with this caption:</p>
+          <div class="caption-copy-box">
+            <code id="caption-text">I just earned the badge on EcoTrack!</code>
+            <button id="btn-copy-caption" class="btn-copy">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
